@@ -1,4 +1,4 @@
-package DsAlgoArchievedPrograms;
+package DsAlgoArchievedPrograms.Sorting;
 
 public class BubbleSort {
     int temp;
