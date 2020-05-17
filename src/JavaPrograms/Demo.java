@@ -1,101 +1,76 @@
 package JavaPrograms;
 
 
-import com.sun.istack.internal.NotNull;
+import KoltinPrograms.Person;
 
-import java.util.*;
+
+import java.util.function.Consumer;
+import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.io.*;
+import java.util.StringJoiner;
+import java.util.StringTokenizer;
 
 public class Demo {
-    public static void main(String[] args) {
+    static int arr[] = {10, 2, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    static int tempMergerArray[] = new int[arr.length];
 
 
-    MySub mySub=new MySub();
-    }
-}
+    static class Arithmetrics {
 
-class MySuper {
-
-    MySuper() {
-        System.out.println("Super was called");
-    }
-}
-
-class MySub extends MySuper{
-    MySub() {
-        System.out.println("Sub was called");
-    }
-}
-
-class Employee implements Comparable<Employee> {
-    String name;
-    int age;
-    int salary;
-
-    public Employee(String name, int age, int salary) {
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public int getSalary() {
-        return salary;
+    interface Perform {
+        void action(int a, int b);
     }
 
 
-    @Override
-    public int compareTo(Employee o) {
-        return this.salary - o.salary;
+    public static void main(String[] args) throws IOException {
+        System.out.format("%,d %s", 2334343, "CHinmay");
     }
 
-    @Override
-    public String toString() {
-        return this.name + " " + this.age + " " + this.salary;
-    }
-}
 
-class Student {
-    int age;
-    String name;
-
-    public Student(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public boolean equals(@NotNull Object obj) {
-        if (this == obj) {
-            return true;
+    static int factrial(int n) {
+        if (n < 1) {
+            return 1;
         }
-        if (this.getClass() != obj.getClass()) {
-            return false;
+        System.out.println(n);
+        return n * factrial(n - 1);
+    }
+
+    static void quickSortRecurcios(int arr[], int low, int high) {
+        int pi = partisioning(arr, low, high);
+        if (low < pi - 1) {
+            quickSortRecurcios(arr, low, pi - 1);
         }
-        Student person = (Student) obj;
-        if (this.name.equals(person.name) && this.age == person.age) {
-            return true;
-        } else {
-            return false;
+        if (pi < high) {
+            quickSortRecurcios(arr, pi, high);
         }
     }
 
-    @Override
-    public int hashCode() {
-        return this.name.length() % 10;
+    static int partisioning(int arr[], int low, int high) {
+        int pivot = arr[(low + high) / 2];
+        while (low <= high) {
+            while (arr[low] < pivot) {
+                low++;
+            }
+            while (arr[high] > pivot) {
+                high--;
+            }
+            if (low <= high) {
+                int temp = arr[low];
+                arr[low] = arr[high];
+                arr[high] = temp;
+
+                low++;
+                high--;
+            }
+        }
+        return low;
     }
+
+
 }
+
+

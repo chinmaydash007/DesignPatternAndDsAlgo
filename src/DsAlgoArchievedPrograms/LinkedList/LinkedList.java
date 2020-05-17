@@ -72,8 +72,6 @@ public class LinkedList {
         node.setNext(t.getNext());
         t.setNext(node);
         size++;
-
-
     }
 
     public void getElements() {
